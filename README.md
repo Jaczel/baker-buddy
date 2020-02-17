@@ -1,4 +1,5 @@
 ## Baker Buddy
+![baker buddy logo](bakerBuddy/Brot-lineart.svg "Baker Buddy")
 
 **NOTE:** This is just a small project for learning web development basics.
 
