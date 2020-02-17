@@ -1,5 +1,5 @@
 ## Baker Buddy
-![baker buddy logo](bakerBuddy/Brot-lineart.svg "Baker Buddy")
+![baker buddy logo](bakerBuddy/Brot-lineart.svg "Baker Buddy" =200x)
 
 **NOTE:** This is just a small project for learning web development basics.
 
