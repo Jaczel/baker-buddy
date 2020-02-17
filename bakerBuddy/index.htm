@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <body>
+        <h3>Baker Buddy</h3>
+        <p>Enter ingredients in grams:</p>
+        <div ng-app="bakerBuddy" ng-controller="myCtrl" ng-init="total=0"> 
+            <p>Flour: <input type="number" ng-model="flour"></p>
+            <p>Water: <input type="number" ng-model="water"></p>
+            <p>Salt: <input type="number" ng-model="salt"></p>
+            <p>Yeast: <input type="number" ng-model="yeast"></p>
+            <p>Baker's Percentage: {{water/flour * 100}}%</p>
+        </div>
+        <script>
+            var app = angular.module('bakerBuddy', []);
+            app.controller('myCtrl', function($scope) {
+                $scope.flour=250;
+                $scope.water=180;
+                $scope.salt=0;
+                $scope.yeast=0;
+            });
+        </script>
+    </body>
+</html>
