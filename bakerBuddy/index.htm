@@ -2,19 +2,39 @@
 <html lang="en-AU">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="bakerBuddy.css"></link>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 </head>
     <body>
         <h3>Baker Buddy</h3>
         <object width='10%' height='10%' data='imgs/bread.svg' type='image/svg+xml'></object>
         <p>Enter ingredients in grams:</p>
-        <div ng-app="bakerBuddy" ng-controller="myCtrl"> 
-            <p>Flour: <input type="number" ng-model="flour" ng-click="updateTotal()"></p>
-            <p>Water: <input type="number" ng-model="water" ng-click="updateTotal()"></p>
-            <p>Salt: <input type="number" ng-model="salt"></p>
-            <p>Yeast: <input type="number" ng-model="yeast"></p>
-            <span ng-load="updateTotal()">Baker's Percentage: {{total}}%</span>
-        </div>
+        <table style="width:30%" ng-app="bakerBuddy" ng-controller="bakerBuddyCtrl"> 
+            <tr>
+                <th>Ingredient</th>
+                <th>Grams</th>
+                <th>Baker's Percentage</th>
+            </tr>
+            <tr>
+                <td>Flour:</td>
+                <td><input type="number" ng-model="flour" ng-change="updatePercentages()"></td>
+                <td>100%</td>
+            </tr>
+            <tr>
+                <td>Water:</td>
+                <td><input type="number" ng-model="water" ng-change="updateHydration()"></p>
+                <td>{{hydration}}%</td>
+            <tr>
+                <td>Salt</td>
+                <td><input type="number" ng-model="salt" ng-change="updateSalt()"></td>
+                <td>{{saltation}}%</td>
+            </tr>
+            <tr>
+                <td>Yeast:</td>
+                <td><input type="number" ng-model="yeast" ng-change="updateYeast()"></td>
+                <td>{{yeastation}}%</td>
+            </tr>
+        </table>
         <script src='bakerBuddy.js'></script>
         <script src='bakerBuddyCtrl.js'></script>
     </body>
