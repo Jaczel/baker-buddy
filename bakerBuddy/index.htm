@@ -17,21 +17,21 @@
             </tr>
             <tr>
                 <td>Flour:</td>
-                <td><input type="number" ng-model="flour" ng-change="updatePercentages()"></td>
+                <td><input type="float" ng-model="flour" ng-change="updatePercentages()"></td>
                 <td>100%</td>
             </tr>
             <tr>
                 <td>Water:</td>
-                <td><input type="number" ng-model="water" ng-change="updateHydration()"></p>
+                <td><input type="float" ng-model="water" ng-change="updateHydration()"></p>
                 <td>{{hydration}}%</td>
             <tr>
                 <td>Salt</td>
-                <td><input type="number" ng-model="salt" ng-change="updateSalt()"></td>
+                <td><input type="float" ng-model="salt" ng-change="updateSalt()"></td>
                 <td>{{saltation}}%</td>
             </tr>
             <tr>
                 <td>Yeast:</td>
-                <td><input type="number" ng-model="yeast" ng-change="updateYeast()"></td>
+                <td><input type="float" ng-model="yeast" ng-change="updateYeast()"></td>
                 <td>{{yeastation}}%</td>
             </tr>
         </table>
