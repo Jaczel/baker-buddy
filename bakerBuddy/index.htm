@@ -3,39 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="bakerBuddy.css"></link>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <title>Baker Buddy</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
     <body>
         <h3>Baker Buddy</h3>
         <object width='10%' height='10%' data='imgs/bread.svg' type='image/svg+xml'></object>
+        <div id="doughType">
+            <b>Dough Type:</b> {{ message }}
+        </div>
+
         <p>Enter ingredients in grams:</p>
-        <table style="width:30%" ng-app="bakerBuddy" ng-controller="bakerBuddyCtrl"> 
+        <div id="ingredientList">
+            <input v-model="newIngredient">
+        </div>
+
+        <div id="ingredientList">
+        <table>
             <tr>
                 <th>Ingredient</th>
                 <th>Grams</th>
                 <th>Baker's Percentage</th>
             </tr>
-            <tr>
-                <td>Flour:</td>
-                <td><input type="float" ng-model="flour" ng-change="updatePercentages()"></td>
-                <td>100%</td>
-            </tr>
-            <tr>
-                <td>Water:</td>
-                <td><input type="float" ng-model="water" ng-change="updateHydration()"></p>
-                <td>{{hydration}}%</td>
-            <tr>
-                <td>Salt</td>
-                <td><input type="float" ng-model="salt" ng-change="updateSalt()"></td>
-                <td>{{saltation}}%</td>
-            </tr>
-            <tr>
-                <td>Yeast:</td>
-                <td><input type="float" ng-model="yeast" ng-change="updateYeast()"></td>
-                <td>{{yeastation}}%</td>
+            <tr v-for="ingredient in ingredients">
+                <td>{{ ingredient.name }}</td>
+                <td>{{ ingredient.weight }}</td>
+                <td>100</td>
             </tr>
         </table>
-        <script src='bakerBuddy.js'></script>
-        <script src='bakerBuddyCtrl.js'></script>
+        </div>
+
+        <script>
+            var app = new Vue({
+                el: '#doughType',
+                data: {
+                    message: 'Sandwich Bread',
+                }
+            })
+            Vue.component('ingredientItem', {
+                props: ['ingredient'],
+                template: '<li>ingredient.name</li>'
+            })
+
+            var ingredientListApp = new Vue({
+                el: '#ingredientList',
+                data: {
+                    ingredients: [
+                    ]
+                }
+            })
+        </script>
     </body>
 </html>
+<!--
+            var doughType = {
+                sandwich: 1,
+                pizza: 2,
+                sourdough: 3,
+                properties {
+                    1: {name: "Sandwich", min_percentage: 60, max_percentage: 70},
+                    2: {name: "Pizza", min_percentage: 70, max_percentage: 75},
+                    3: {name: "Sourdough", min_percentage: 70, max_percentage: 80}
+                }
+            }
+-->
