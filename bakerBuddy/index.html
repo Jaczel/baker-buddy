@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="bakerBuddy.css"></link>
+  <title>Baker Buddy</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+  <h3>Baker Buddy</h3>
+  <object width='10%' height='10%' data='imgs/bread.svg' type='image/svg+xml'></object>
+  <div id="doughType">
+    <b>Dough Type:</b> {{ message }}
+  </div>
+  <div id="ingredientList">
+    <input type="text" v-model='ingredientName'>
+    <input type="number" v-model='ingredientWeight'>
+    <button @click='addIngredient(ingredientName, ingredientWeight)'>
+        Add
+    </button>
+
+  <table>
+    <tr>
+      <th>Ingredient</th>
+      <th>Grams</th>
+      <th>Baker's Percentage</th>
+    </tr>
+    <tr v-for="ingredient in ingredients">
+      <td>{{ ingredient.name }}</td>
+      <td>{{ ingredient.weight }}</td>
+      <td>100</td>
+    </tr>
+  </table>
+  </div>
+
+<script>
+  var app = new Vue({
+    el: '#doughType',
+    data: {
+      message: 'Sandwich Bread',
+    }
+  })
+
+  var ingredientList = new Vue({
+    el: '#ingredientList',
+    data: {
+      ingredients: [
+        {name: 'Flour', weight: 575},
+        {name: 'Water', weight: 425},
+        {name: 'Salt', weight: 15},
+      ],
+      ingredientName: '',
+      ingredientWeight: 0,
+    },
+    methods: {
+      addIngredient() {
+        this.ingredients.push({
+          name: this.ingredientName,
+          weight: this.ingredientWeight
+        });
+      }
+    }
+  })
+
+  var doughType = {
+    sandwich: 1,
+    pizza: 2,
+    sourdough: 3,
+    properties: {
+      1: {name: "Sandwich", min_percentage: 60, max_percentage: 70},
+      2: {name: "Pizza", min_percentage: 70, max_percentage: 75},
+      3: {name: "Sourdough", min_percentage: 70, max_percentage: 80}
+    }
+  }
+</script>
+</body>
+</html>
