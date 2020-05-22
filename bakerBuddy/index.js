@@ -5,26 +5,26 @@ var app = new Vue({
   }
 })
 
-Vue.component('ingredient-item', {
-    props: ['ingredient'],
-    template:`
-        <div class='ingredient-item'>
-            <td>{{ingredient.name}}</td>
-            <td>{{ingredient.quantity}}</td>
-            <td>100</td>
-        </div>
-    `
-})
 
 
-var ingredientList = new Vue({
+var ingredientListTable = new Vue({
   el: '#ingredientList',
   data: {
     ingredientList: [
-      {id: 1, name: 'Flour', quantity: 575},
-      {id: 2, name: 'Water', quantity: 425},
-      {id: 3, name: 'Salt', quantity: 15},
+      {ID: 1, Name: 'Flour', Quantity: 575},
+      {ID: 2, Name: 'Water', Quantity: 425},
+      {ID: 3, Name: 'Salt', Quantity: 15},
     ],
   },
+  computed: {
+    "columns": function columns() {
+        if (this.ingredientList.length == 0) {
+            return [];
+        }
+        // Return the columns in the first row
+        return Object.keys(this.ingredientList[0])
+        
+    }
+  }
 })
 

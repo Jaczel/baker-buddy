@@ -14,38 +14,25 @@
   <div id="doughType">
     <b>Dough Type:</b> {{ message }}
   </div>
-
-  <div id="ingredientList">
-    <!--
-    <input type="text" v-model='ingredientName'>
-    <input type="number" v-model='ingredientWeight'>
-    <button @click='addIngredient(ingredientName, ingredientWeight)'>
-        Add
-    </button>
-    -->
-
+    <div id='ingredientList'>
     <table>
-      <tr>
-        <th>Ingredient</th>
-        <th>Grams</th>
-        <th>Baker's Percentage</th>
-      </tr>
-      <tr 
-        is='ingredient-item' 
-        v-for='ingredient in ingredientList' 
-        v-bind:ingredient='ingredient' 
-        v-bind:key=ingredient.id>
-      </tr>
+      <thead>
+        <tr>
+          <th v-for="col in columns">
+            {{col}}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for='ingredient in ingredientList'>
+          <td v-for='col in columns'>
+            {{ingredient[col]}}
+          </td>
+        </tr>
+      </tbody>
     </table>
-  </div>
+    </div>
 
   <script src="./index.js"></script>
 </body>
 </html>
-<!--
-        <ingredient-item
-            v-for='ingredient in ingredientList'
-            v-bind:ingredient='ingredient'
-            v-bind:key='ingredient.name'>
-        </ingredient-item>
--->
